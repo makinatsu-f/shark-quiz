@@ -312,4 +312,11 @@ challengeBtn.addEventListener("click", () => {
   startGame();
 });
 
-againBtn.addEventListener("click", startGame);
+againBtn.addEventListener("click", () => {
+  if (challengeMode) {
+    greatWhiteSong.currentTime = 0;
+    greatWhiteSong.play();
+  }
+
+  startGame();
+});
