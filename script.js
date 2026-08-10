@@ -54,6 +54,7 @@ const canvas = document.getElementById("sharkCanvas");
 const ctx = canvas.getContext("2d");
 const flash = document.getElementById("correctFlash");
 const wrongSound = new Audio(ASSET + "wrong.mp3.wav");
+const correctSound = new Audio(ASSET + "correct.mp3.wav");
 
 let currentShark = null;
 let questionIndex = 0;
@@ -212,6 +213,10 @@ function chooseAnswer(name, btn) {
 
   const elapsed = performance.now() - questionStart;
   totalElapsed += elapsed;
+
+  correctSound.currentTime = 0;
+　correctSound.play();
+  
   revealShark = true;
   flash.classList.remove("show");
   void flash.offsetWidth;
