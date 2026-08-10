@@ -56,6 +56,7 @@ const ctx = canvas.getContext("2d");
 const flash = document.getElementById("correctFlash");
 const wrongSound = new Audio(ASSET + "wrong.mp3.wav");
 const correctSound = new Audio(ASSET + "correct.mp3.wav");
+const greatWhiteSong = new Audio(ASSET + "great_white_shark_song.mp3");
 
 let currentShark = null;
 let questionIndex = 0;
@@ -291,7 +292,8 @@ function finishGame() {
 
 function finishChallenge() {
   cancelAnimationFrame(rafId);
-
+　greatWhiteSong.pause();
+  
   totalTimeEl.innerHTML = `30<span>秒</span>`;
   resultCommentEl.textContent = `30秒で ${challengeScore}問正解！`;
 
@@ -304,6 +306,8 @@ startBtn.addEventListener("click", startGame);
 
 challengeBtn.addEventListener("click", () => {
   challengeMode = true;
+  greatWhiteSong.currentTime = 0;
+  greatWhiteSong.play();
   startGame();
 });
 
