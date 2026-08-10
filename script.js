@@ -57,6 +57,7 @@ const flash = document.getElementById("correctFlash");
 const wrongSound = new Audio(ASSET + "wrong.mp3.wav");
 const correctSound = new Audio(ASSET + "correct.mp3.wav");
 const greatWhiteSong = new Audio(ASSET + "great_white_shark_song.mp3");
+greatWhiteSong.volume = 0.4;
 
 let currentShark = null;
 let questionIndex = 0;
