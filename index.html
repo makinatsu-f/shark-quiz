@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6e73ee">
+<title>このサメだーれだ？</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <section id="startScreen" class="screen start-screen">
+    <div class="start-card">
+      <div class="start-shark">🦈</div>
+      <h1>このサメだーれだ？</h1>
+      <p>モザイクからサメを見つけよう！</p>
+      <button id="startBtn" class="primary-btn">START</button>
+      <p class="small-note">全10問・タイムアタック</p>
+    </div>
+  </section>
+
+  <section id="gameScreen" class="screen game-screen hidden">
+    <header class="hud">
+      <div class="question-count">第 <span id="questionNo">1</span> 問 / 10</div>
+      <div class="timer"><span id="timer">0.00</span><span class="unit">秒</span></div>
+    </header>
+
+    <main id="seaStage" class="sea-stage" aria-label="海の中のクイズ画面">
+      <div class="sea-bg"></div>
+      <div id="decorLayer" class="decor-layer"></div>
+      <canvas id="sharkCanvas" class="shark-canvas"></canvas>
+      <div id="correctFlash" class="correct-flash">CORRECT!</div>
+    </main>
+
+    <section class="answers">
+      <div id="answerGrid" class="answer-grid"></div>
+    </section>
+  </section>
+
+  <section id="resultScreen" class="screen result-screen hidden">
+    <div class="result-card">
+      <div class="result-title">🦈 SURVIVED!</div>
+      <div class="result-label">TOTAL TIME</div>
+      <div id="totalTime" class="total-time">0.00<span>秒</span></div>
+      <div id="resultComment" class="result-comment"></div>
+      <button id="againBtn" class="primary-btn">もう一回！</button>
+    </div>
+  </section>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
