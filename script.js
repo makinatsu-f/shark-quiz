@@ -43,6 +43,7 @@ const startScreen = document.getElementById("startScreen");
 const gameScreen = document.getElementById("gameScreen");
 const resultScreen = document.getElementById("resultScreen");
 const startBtn = document.getElementById("startBtn");
+const challengeBtn = document.getElementById("challengeBtn");
 const againBtn = document.getElementById("againBtn");
 const answerGrid = document.getElementById("answerGrid");
 const questionNo = document.getElementById("questionNo");
@@ -60,6 +61,7 @@ let currentShark = null;
 let questionIndex = 0;
 let questionStart = 0;
 let totalElapsed = 0;
+let challengeScore = 0;
 let rafId = 0;
 let sharkImage = new Image();
 let sharkReady = false;
@@ -185,6 +187,12 @@ function animationLoop(now) {
   drawMosaicImage(sharkImage, now);
   const elapsed = (performance.now()-questionStart)/1000;
   timerEl.textContent = Math.max(0,elapsed).toFixed(2);
+
+  if (challengeMode && performance.now() >= challengeEndTime) {
+  finishChallenge();
+  return;
+}
+  
   rafId = requestAnimationFrame(animationLoop);
 }
 
@@ -213,6 +221,10 @@ function chooseAnswer(name, btn) {
 
   const elapsed = performance.now() - questionStart;
   totalElapsed += elapsed;
+
+  if (challengeMode) {
+  challengeScore++;
+}
 
   correctSound.currentTime = 0;
 　correctSound.play();
@@ -248,6 +260,7 @@ function startQuestion() {
   setupDecor();
   renderAnswers();
 }
+let challengeEndTime = 0;
 
 function startGame() {
   cancelAnimationFrame(rafId);
@@ -256,6 +269,12 @@ function startGame() {
   gameScreen.classList.remove("hidden");
   questionIndex = 0;
   totalElapsed = 0;
+  challengeScore = 0;
+
+  if (challengeMode) {
+  challengeEndTime = performance.now() + 31000;
+}
+  
   resizeCanvas();
   startQuestion();
   rafId = requestAnimationFrame(animationLoop);
@@ -270,5 +289,22 @@ function finishGame() {
   resultScreen.classList.remove("hidden");
 }
 
+function finishChallenge() {
+  cancelAnimationFrame(rafId);
+
+  totalTimeEl.innerHTML = `30<span>秒</span>`;
+  resultCommentEl.textContent = `30秒で ${challengeScore}問正解！`;
+
+  gameScreen.classList.add("hidden");
+  resultScreen.classList.remove("hidden");
+}
+let challengeMode = false;
+
 startBtn.addEventListener("click", startGame);
+
+challengeBtn.addEventListener("click", () => {
+  challengeMode = true;
+  startGame();
+});
+
 againBtn.addEventListener("click", startGame);
