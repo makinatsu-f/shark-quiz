@@ -240,7 +240,7 @@ function chooseAnswer(name, btn) {
   currentShark = null;
   setTimeout(() => {
     questionIndex++;
-    if (questionIndex >= 10) {
+    if (!challengeMode && questionIndex >= 10) {
       finishGame();
     } else {
       startQuestion();
