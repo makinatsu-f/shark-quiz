@@ -137,7 +137,7 @@ h1{font-size:28px;margin:8px 0 10px;letter-spacing:.02em}
 
 @media (max-height:760px){
   .hud{height:62px;flex-basis:62px}
-  .answers{flex-basis:205px}
+  .answers{flex-basis:215px}
   .answer-btn{font-size:14px}
 }
 @media (min-width:700px){
