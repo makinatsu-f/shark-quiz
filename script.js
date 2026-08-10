@@ -61,6 +61,7 @@ let totalElapsed = 0;
 let rafId = 0;
 let sharkImage = new Image();
 let sharkReady = false;
+let revealShark = false;
 let sharkX = 0.5;
 let sharkY = 0.47;
 let sharkDrift = 0;
@@ -150,6 +151,11 @@ function drawMosaicImage(img, timeMs) {
   const cy = h*0.50;
   const dx = cx - dw/2;
   const dy = cy - dh/2;
+  
+  if (revealShark) {
+  ctx.drawImage(img, dx, dy, dw, dh);
+  return;
+}
 
   // Continuous pixelation: starts very coarse, gradually becomes clear.
   const elapsed = Math.max(0, performance.now() - questionStart);
@@ -203,6 +209,7 @@ function chooseAnswer(name, btn) {
 
   const elapsed = performance.now() - questionStart;
   totalElapsed += elapsed;
+  revealShark = true;
   flash.classList.remove("show");
   void flash.offsetWidth;
   flash.classList.add("show");
@@ -220,6 +227,7 @@ function chooseAnswer(name, btn) {
 }
 
 function startQuestion() {
+  revealShark = false;
   currentShark = sharks[Math.floor(Math.random()*sharks.length)];
   questionNo.textContent = questionIndex + 1;
   timerEl.textContent = "0.00";
