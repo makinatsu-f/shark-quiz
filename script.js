@@ -53,6 +53,7 @@ const decorLayer = document.getElementById("decorLayer");
 const canvas = document.getElementById("sharkCanvas");
 const ctx = canvas.getContext("2d");
 const flash = document.getElementById("correctFlash");
+const wrongSound = new Audio(ASSET + "wrong.mp3.wav");
 
 let currentShark = null;
 let questionIndex = 0;
@@ -204,6 +205,8 @@ function chooseAnswer(name, btn) {
     void btn.offsetWidth;
     btn.classList.add("wrong");
     if (navigator.vibrate) navigator.vibrate(85);
+    wrongSound.currentTime = 0;
+　　wrongSound.play();
     return;
   }
 
