@@ -118,7 +118,7 @@ h1{font-size:28px;margin:8px 0 10px;letter-spacing:.02em}
 }
 .answers{
   flex:0 0 240px;background:rgba(255,255,255,.98);
-  padding:10px 10px calc(10px + env(safe-area-inset-bottom));
+  padding:7px 10px calc(7px + env(safe-area-inset-bottom));
   z-index:10;box-shadow:0 -8px 20px rgba(35,45,80,.08);
 }
 .answer-grid{height:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
