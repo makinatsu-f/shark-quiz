@@ -45,6 +45,7 @@ const resultScreen = document.getElementById("resultScreen");
 const startBtn = document.getElementById("startBtn");
 const challengeBtn = document.getElementById("challengeBtn");
 const againBtn = document.getElementById("againBtn");
+const homeBtn = document.getElementById("homeBtn");
 const answerGrid = document.getElementById("answerGrid");
 const questionNo = document.getElementById("questionNo");
 const timerEl = document.getElementById("timer");
@@ -320,4 +321,12 @@ againBtn.addEventListener("click", () => {
   }
 
   startGame();
+});
+
+homeBtn.addEventListener("click", () => {
+  deepSeaDash.pause();
+  deepSeaDash.currentTime = 0;
+
+  resultScreen.classList.add("hidden");
+  startScreen.classList.remove("hidden");
 });
