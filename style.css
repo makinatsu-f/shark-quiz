@@ -21,7 +21,7 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 
 /* Start / result */
 .start-screen,.result-screen{
-  display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
   background:linear-gradient(180deg,#71cddd 0%,#7382e9 58%,#6664e9 100%);
   padding:24px;
 }
