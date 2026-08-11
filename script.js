@@ -61,6 +61,10 @@ const deepSeaDash = new Audio(ASSET + "deep_sea_dash.mp3");
 deepSeaDash.volume = 0.3;
 deepSeaDash.loop = true;
 
+const tenChallengeMusic = new Audio(ASSET + "ten_challenge.mp3");
+tenChallengeMusic.volume = 0.3;
+tenChallengeMusic.loop = true;
+
 let currentShark = null;
 let questionIndex = 0;
 let questionStart = 0;
@@ -278,6 +282,14 @@ function startGame() {
   if (challengeMode) {
   challengeEndTime = performance.now() + 31000;
 }
+
+  if (challengeMode) {
+  deepSeaDash.currentTime = 0;
+  deepSeaDash.play();
+} else {
+  tenChallengeMusic.currentTime = 0;
+  tenChallengeMusic.play();
+}
   
   resizeCanvas();
   startQuestion();
@@ -286,6 +298,10 @@ function startGame() {
 
 function finishGame() {
   cancelAnimationFrame(rafId);
+
+  deepSeaDash.pause();
+　tenChallengeMusic.pause();
+  
   const seconds = (totalElapsed/1000).toFixed(2);
   totalTimeEl.innerHTML = `${seconds}<span>秒</span>`;
   resultCommentEl.textContent = comments[Math.floor(Math.random()*comments.length)];
@@ -295,7 +311,9 @@ function finishGame() {
 
 function finishChallenge() {
   cancelAnimationFrame(rafId);
+  
 　deepSeaDash.pause();
+  tenChallengeMusic.pause();
   
  totalTimeEl.innerHTML = `30秒で ${challengeScore}問正解！`;
 resultCommentEl.textContent = comments[Math.floor(Math.random() * comments.length)];
