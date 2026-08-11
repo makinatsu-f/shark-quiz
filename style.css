@@ -143,3 +143,14 @@ h1{font-size:28px;margin:8px 0 10px;letter-spacing:.02em}
 @media (min-width:700px){
   .app{height:min(92vh,932px)}
 }
+
+.home-btn {
+  margin-top: 14px;
+  padding: 6px 12px;
+  border: none;
+  background: none;
+  color: #555;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+}
