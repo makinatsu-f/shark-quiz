@@ -297,8 +297,9 @@ function finishChallenge() {
   cancelAnimationFrame(rafId);
 　deepSeaDash.pause();
   
-  totalTimeEl.innerHTML = `30<span>秒</span>`;
-  resultCommentEl.textContent = `30秒で ${challengeScore}問正解！`;
+ totalTimeEl.innerHTML = `30秒で ${challengeScore}問正解！`;
+resultCommentEl.textContent = comments[Math.floor(Math.random() * comments.length)];
+resultScreen.classList.add("challenge-result");
 
   gameScreen.classList.add("hidden");
   resultScreen.classList.remove("hidden");
