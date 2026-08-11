@@ -154,3 +154,12 @@ h1{font-size:28px;margin:8px 0 10px;letter-spacing:.02em}
   font-size: 14px;
   cursor: pointer;
 }
+
+.challenge-result .result-label {
+  display: none;
+}
+
+.challenge-result .total-time {
+  font-size: 24px;
+  color: #222;
+}
