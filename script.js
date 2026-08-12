@@ -65,6 +65,9 @@ const tenChallengeMusic = new Audio(ASSET + "ten_challenge.mp3");
 tenChallengeMusic.volume = 0.3;
 tenChallengeMusic.loop = true;
 
+const clearSound = new Audio(ASSET + "kirakira.mp3");
+clearSound.volume = 0.5;
+
 let currentShark = null;
 let questionIndex = 0;
 let questionStart = 0;
@@ -306,6 +309,10 @@ function finishGame() {
   totalTimeEl.innerHTML = `${seconds}<span>秒</span>`;
   resultCommentEl.textContent = comments[Math.floor(Math.random()*comments.length)];
   gameScreen.classList.add("hidden");
+
+  clearSound.currentTime = 0;
+　clearSound.play();
+  
   resultScreen.classList.remove("hidden");
 }
 
@@ -320,6 +327,10 @@ resultCommentEl.textContent = comments[Math.floor(Math.random() * comments.lengt
 resultScreen.classList.add("challenge-result");
 
   gameScreen.classList.add("hidden");
+
+  clearSound.currentTime = 0;
+　clearSound.play();
+  
   resultScreen.classList.remove("hidden");
 }
 let challengeMode = false;
